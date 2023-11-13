@@ -11,9 +11,9 @@ class RestrictedItemList(generics.ListAPIView):
 
     def get_queryset(self):
         user = self.request.user
+        user_profile = user.profile  
 
-        # Verifique se o e-mail do usuário foi verificado
-        if not user.profile.email_confirmed:
+        if not user_profile.email_confirmation_token:
             raise PermissionDenied("Email not verified")
 
         queryset = item.objects.all()

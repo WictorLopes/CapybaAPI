@@ -7,6 +7,8 @@ from rest_framework import status
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
+from authentication.models.userProfile import UserProfile
+
 class RegistrationTestCase(TestCase):
     def test_user_registration(self):
         client = APIClient()
@@ -50,9 +52,13 @@ class EmailConfirmationTestCase(TestCase):
     def setUp(self):
         self.client = APIClient()
         self.user = get_user_model().objects.create_user(
-            username='admin',
-            email='admin@admin.com',
-            password='123'
+            username='username',
+            email='email',
+            password='password'
+        )
+        self.profile = UserProfile.objects.create(
+            user=self.user,
+            email_confirmation_token='token_here'
         )
 
     def test_email_confirmation(self):

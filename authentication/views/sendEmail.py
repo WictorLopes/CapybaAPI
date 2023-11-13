@@ -9,16 +9,17 @@ from ..models import userProfile
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
 def send_email_confirmation_token(request):
-    user = request.user
+    user_profile, created = userProfile.objects.get_or_create(user=request.user)
     token = secrets.token_urlsafe(16)
-    print('aqui',token)
-    user.profile.email_confirmation_token = token 
-    user.save()
+    print('aqui', token)
+    user_profile.email_confirmation_token = token
+    user_profile.save()
+
     send_mail(
         'Confirmação de E-mail',
         f'Seu token de confirmação de e-mail é: {token}',
         'noreply@example.com',
-        [user.email],
+        [request.user.email],
         fail_silently=False,
     )
     return Response({'message': 'Token de confirmação enviado com sucesso.'}, status=status.HTTP_200_OK)
