@@ -1,6 +1,9 @@
-name: Deploy WebApp
+name: Deploy to PythonAnywhere
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -10,9 +13,18 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Reload pythonanywhere webapp
+    - name: Upload files to PythonAnywhere
+      run: |
+        # Aqui você deve adicionar o comando para executar seu script de upload
+        python3 upload-script.py
+      env:
+        PYTHONANYWHERE_API_TOKEN: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
+        USERNAME: seu_usuario_pythonanywhere
+        DOMAIN_NAME: seu_dominio_pythonanywhere.com
+
+    - name: Reload webapp on PythonAnywhere
       uses: jensvog/pythonanywhere-webapp-reload-action@v1
       with:
-        username: wictorlopes
+        username: ${{ env.USERNAME }}
         api-token: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
-        domain-name: wictorlopes.pythonanywhere.com
+        domain-name: ${{ env.DOMAIN_NAME }}
