@@ -27,5 +27,5 @@ def main():
             else:
                 print(f"Failed to upload {file}. Status Code: {response.status_code}")
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
