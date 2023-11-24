@@ -1,18 +1,18 @@
 name: Deploy WebApp
+
 on: [push]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      # Upload files
-      # ...
-
-      - name: Reload webapp
-        uses: jensvog/pythonanywhere-webapp-reload-action@v1
-        with:
-          username: wictorlopes
-          api-token: 0c0988959cfc39e0e209425aa843941a2c5dbc9b
-          domain-name: wictorlopes.pythonanywhere.com
+    - name: Reload webapp on PythonAnywhere
+      uses: jensvog/pythonanywhere-webapp-reload-action@v1
+      with:
+        username: wictorlopes
+        api-token: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
+        domain-name: wictorlopes.pythonanywhere.com
