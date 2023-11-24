@@ -14,7 +14,7 @@ def main():
     USERNAME = os.environ['USERNAME']
     API_TOKEN = os.environ['PYTHONANYWHERE_API_TOKEN']
     # Define your local directory and remote directory here
-    LOCAL_DIR = '"C:\Users\wicto\OneDrive\Documents\CapybaAPI"'
+    LOCAL_DIR = 'C:\Users\wicto\OneDrive\Documents\CapybaAPI'
     REMOTE_DIR = '/home/wictorlopes/'
 
     for root, dirs, files in os.walk(LOCAL_DIR):
