@@ -10,7 +10,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Reload webapp on PythonAnywhere
+    - name: Reload pythonanywhere webapp
       uses: jensvog/pythonanywhere-webapp-reload-action@v1
       with:
         username: wictorlopes
