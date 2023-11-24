@@ -13,7 +13,6 @@ jobs:
       - name: Reload webapp
         uses: jensvog/pythonanywhere-webapp-reload-action@v1
         with:
-          host: 'wictorlopes.pythonanywhere.com'
           username: wictorlopes
           api-token: 0c0988959cfc39e0e209425aa843941a2c5dbc9b
           domain-name: wictorlopes.pythonanywhere.com
