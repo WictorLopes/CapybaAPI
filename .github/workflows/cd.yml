@@ -19,12 +19,12 @@ jobs:
         python3 upload-script.py
       env:
         PYTHONANYWHERE_API_TOKEN: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
-        USERNAME: seu_usuario_pythonanywhere
-        DOMAIN_NAME: seu_dominio_pythonanywhere.com
+        USERNAME: wictorlopes
+        DOMAIN_NAME: wictorlopes.pythonanywhere.com
 
     - name: Reload webapp on PythonAnywhere
       uses: jensvog/pythonanywhere-webapp-reload-action@v1
       with:
-        username: ${{ env.USERNAME }}
+        username: wictorlopes
         api-token: ${{ secrets.PYTHONANYWHERE_API_TOKEN }}
-        domain-name: ${{ env.DOMAIN_NAME }}
+        domain-name: wictorlopes.pythonanywhere.com
